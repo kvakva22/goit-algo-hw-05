@@ -30,6 +30,16 @@ def add_contact(args, contacts):
     return "Contact added."
 
 
+def input_error(func):
+    def inner(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except ValueError:
+            return "Give me the new phone number"
+
+    return inner
+
+@input_error
 def change_contact(args, contacts):
     name, new_phone = args 
     contacts[name] = new_phone
