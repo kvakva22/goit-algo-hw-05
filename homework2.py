@@ -1,6 +1,6 @@
 def generator_numbers(text):
     words = text.split()
-    for word in words: 
+    for word in words [1: -1]: 
         try:
             yield float(word)
         except ValueError:
