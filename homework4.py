@@ -3,7 +3,9 @@ def input_error(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            return "Invalid command."
+            return "Give me name and phone please."
+        except IndexError:
+            return "Give me the needed name"
 
     return inner
 
@@ -14,14 +16,6 @@ def parse_input(user_input):
     return cmd, *args
 
 
-def input_error(func):
-    def inner(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
-        except ValueError:
-            return "Give me name and phone please."
-
-    return inner
 
 @input_error
 def add_contact(args, contacts):
@@ -30,14 +24,6 @@ def add_contact(args, contacts):
     return "Contact added."
 
 
-def input_error(func):
-    def inner(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
-        except ValueError:
-            return "Give me the new phone number"
-
-    return inner
 
 @input_error
 def change_contact(args, contacts):
@@ -45,14 +31,6 @@ def change_contact(args, contacts):
     contacts[name] = new_phone
     return "Contact updated"
 
-
-def input_error(func):
-    def inner(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
-        except IndexError:
-            return "Give me the needed name"
-    return inner
 
 
 @input_error
