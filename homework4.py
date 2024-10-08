@@ -28,8 +28,11 @@ def add_contact(args, contacts):
 @input_error
 def change_contact(args, contacts):
     name, new_phone = args 
-    contacts[name] = new_phone
-    return "Contact updated"
+    if name in contacts:
+        contacts[name] = new_phone
+        return "Contact updated"
+    else:
+        return "Contact was not found"
 
 
 
